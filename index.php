@@ -1,6 +1,6 @@
 
   <!-- Navigation -->
-<?php include("nav.php") ?>
+<?php include("layout/header.php") ?>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -85,9 +85,5 @@
       </form>
     </div>
   </div>
-
   <!-- Footer -->
-<?php include("footer.php") ?>
-
-</body>
-</html>
+<?php include("layout/footer.php") ?>
