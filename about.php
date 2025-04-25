@@ -8,7 +8,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BrewBuzz - About Us</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="src/styles.css">
+  <link rel="stylesheet" href="src/css/styles.css">
 </head>
 <body>
   <!-- Navigation -->
@@ -30,6 +30,6 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <p>© 2025 BrewBuzz. All rights reserved.</p>
   </footer>
 
-  <script src="src/script.js"></script>
+  <script src="src/js/script.js"></script>
 </body>
 </html>

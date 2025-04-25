@@ -1,13 +1,20 @@
-<header class="navbar">
+<?php
+$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+?>
+<link rel="stylesheet" href="src/css/styles.css">
+<header class="header">
   <div class="container">
-    <button class="hamburger" id="hamburger">
-      <i class="fas fa-bars"></i>
+    <a href="/index.php" class="logo">BrewBuzz</a>
+    <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
     </button>
-    <nav>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="philosophy.php" class="<?php echo $current_page == 'philosophy.php' ? 'active' : ''; ?>">Philosophy</a></li>
-        <li><a href="menu.php" class="<?php echo $current_page == 'menu.php' ? 'active' : ''; ?>">Menu</a></li>
-        <li><a href="find-us.php" class="<?php echo $current_page == 'find-us.php' ? 'active' : ''; ?>">How to Find Us</a></li>
+    <nav class="nav-menu" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.php" <?php echo $current_page === 'index.php' ? 'class="active"' : ''; ?>>Home</a></li>
+        <li><a href="about.php" <?php echo $current_page === 'about.php' ? 'class="active"' : ''; ?>>About</a></li>
+        <li><a href="contact.php" <?php echo $current_page === 'contact.php' ? 'class="active"' : ''; ?>>Contact</a></li>
+        <li><a href="login.php" <?php echo $current_page === 'login.php' ? 'class="active"' : ''; ?>>Login</a></li>
+        <li><a href="register.php" <?php echo $current_page === 'register.php' ? 'class="active"' : ''; ?>>Register</a></li>
       </ul>
     </nav>
   </div>

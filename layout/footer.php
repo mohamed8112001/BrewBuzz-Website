@@ -1,7 +1,7 @@
 <footer class="footer">
   <p>© 2025 BrewBuzz. All rights reserved.</p>
 </footer>
-<script src="src/script.js"></script>
+<script src="src/js/script.js"></script>
 <script>
 const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
 reviews.forEach(review => {
@@ -10,3 +10,4 @@ reviews.forEach(review => {
   document.querySelector('.coffee-picks').appendChild(div);
 });
 </script>
+
