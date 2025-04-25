@@ -1,24 +1,27 @@
-  <?php include 'layout/header.php'; ?>
-
-  <!-- Register Section -->
-  <section class="container" style="padding: 40px 0;">
+<?php
+session_start(['cookie_httponly' => true]);
+require_once 'includes/config.php';
+include 'layout/header.php';
+?>
+<section class="form-section container animate-fade-in">
+  <div class="form-card">
     <h2>Create an Account</h2>
-    <form id="registerForm" style="max-width: 500px; margin: 20px auto;">
+    <form id="registerForm" class="modern-form" method="POST" action="register_handler.php">
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" required>
+        <input type="text" id="name" name="name" required aria-required="true" placeholder="Name">
       </div>
       <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" required>
+        <input type="email" id="email" name="email" required aria-required="true" placeholder="Email">
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" required>
+      <div class="form-group password-group">
+        <input type="password" id="password" name="password" required aria-required="true" placeholder="Password">
+        <i class="fas fa-eye toggle-password" aria-label="Toggle password visibility"></i>
       </div>
-      <p id="registerError" class="error"></p>
-      <button type="submit" class="btn">Register</button>
+      <p id="registerError" class="error" role="alert"></p>
+      <button type="submit" class="btn btn-circle animate-pulse">Register</button>
+      <p class="form-footer">Already have an account? <a href="login.php">Login here</a></p>
     </form>
-  </section>
-
-  <?php include 'layout/footer.php'; ?>
+  </div>
+</section>
+<?php include 'layout/footer.php'; ?>
+<script src="src/js/script.js" defer></script>
