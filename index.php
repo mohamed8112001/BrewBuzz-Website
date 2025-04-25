@@ -3,18 +3,7 @@ session_start(['cookie_httponly' => true]);
 $current_page = basename($_SERVER['PHP_SELF']);
 require_once 'includes/config.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BrewBuzz - Discover top coffee blends, share reviews, and join a vibrant coffee community.">
-  <meta name="keywords" content="coffee, BrewBuzz, espresso, latte, cold brew, coffee reviews">
-  <title>BrewBuzz - Top Coffee Picks</title>
-  <link rel="icon" href="/src/images/favicon.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="/src/css/styles.css">
-</head>
+
 <body>
   <!-- Navigation -->
   <?php include 'layout/header.php'; ?>
