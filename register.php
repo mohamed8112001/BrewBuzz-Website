@@ -1,5 +1,4 @@
 <?php
-session_start(['cookie_httponly' => true]);
 require_once 'includes/config.php';
 include 'layout/header.php';
 ?>
@@ -7,6 +6,7 @@ include 'layout/header.php';
   <div class="form-card">
     <h2>Create an Account</h2>
     <form id="registerForm" class="modern-form" method="POST" action="register_handler.php">
+      <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
       <div class="form-group">
         <input type="text" id="name" name="name" required aria-required="true" placeholder="Name">
       </div>
@@ -24,4 +24,3 @@ include 'layout/header.php';
   </div>
 </section>
 <?php include 'layout/footer.php'; ?>
-<script src="src/js/script.js" defer></script>

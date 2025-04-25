@@ -6,6 +6,7 @@ include 'layout/header.php';
 <section class="form-section container animate-fade-in">
   <div class="form-card">
     <h2>Member Login</h2>
+    <h4>Welcome To our Website</h4>
     <form id="loginForm" class="modern-form">
       <div class="form-group">
         <label for="email">Email</label>
@@ -23,4 +24,3 @@ include 'layout/header.php';
   </div>
 </section>
 <?php include 'layout/footer.php'; ?>
-<script src="src/js/script.js" defer></script>

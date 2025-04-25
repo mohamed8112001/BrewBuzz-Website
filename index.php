@@ -181,7 +181,5 @@ require_once 'includes/config.php';
 
   <!-- Footer -->
   <?php include 'layout/footer.php'; ?>
-
-  <script src="src/js/script.js" defer></script>
 </body>
 </html>

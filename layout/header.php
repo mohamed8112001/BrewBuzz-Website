@@ -7,7 +7,7 @@ if (!isset($current_page)) {
 <link rel="stylesheet" href="src/css/styles.css">
 <header class="header">
   <div class="container">
-    <a href="/index.php" class="logo">BrewBuzz</a>
+    <a href="index.php" class="logo">BrewBuzz</a>
     <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
