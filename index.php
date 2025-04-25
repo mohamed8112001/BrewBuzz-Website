@@ -57,7 +57,7 @@ require_once 'includes/config.php';
     <h2>Top Coffee Picks</h2>
     <div class="coffee-grid">
       <div class="coffee-card animate-slide-up">
-        <img src="https://images.unsplash.com/photo-1600189261867-1e7b3ea19572" alt="Classic Espresso" loading="lazy">
+        <img src="src/images/img3.webp" alt="Classic Espresso" loading="lazy">
         <h3>Classic Espresso</h3>
         <p>Bold and rich, perfect for a quick caffeine kick.</p>
         <div class="star-rating" data-rating="4">
@@ -65,7 +65,7 @@ require_once 'includes/config.php';
         </div>
       </div>
       <div class="coffee-card animate-slide-up">
-        <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772" alt="Creamy Latte" loading="lazy">
+        <img src="src/images/image2.jpg" alt="Creamy Latte" loading="lazy">
         <h3>Creamy Latte</h3>
         <p>Smooth and frothy, a coffee lover's delight.</p>
         <div class="star-rating" data-rating="5">
@@ -73,7 +73,7 @@ require_once 'includes/config.php';
         </div>
       </div>
       <div class="coffee-card animate-slide-up">
-        <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856" alt="Cold Brew" loading="lazy">
+        <img src="src/images/berw.jpeg" alt="Cold Brew" loading="lazy">
         <h3>Cold Brew</h3>
         <p>Refreshing and strong, ideal for warm days.</p>
         <div class="star-rating" data-rating="3">
@@ -124,7 +124,33 @@ require_once 'includes/config.php';
   <!-- Reviews Section -->
   <section class="reviews container animate-fade-in">
     <h2>Community Reviews</h2>
-    <div class="reviews-container" id="reviewsContainer"></div>
+    <div class="reviews-container" id="reviewsContainer">
+      <!-- Example Review Card -->
+      <div class="review-card">
+        <h4>Classic Espresso</h4>
+        <p>Bold and rich, perfect for a quick caffeine kick.</p>
+        <div class="star-rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+        </div>
+        <p class="review-date">Reviewed on: 2023-10-01</p>
+      </div>
+      <div class="review-card">
+        <h4>Creamy Latte</h4>
+        <p>Smooth and frothy, a coffee lover's delight.</p>
+        <div class="star-rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="review-date">Reviewed on: 2023-10-02</p>
+      </div>
+      <div class="review-card">
+        <h4>Cold Brew</h4>
+        <p>Refreshing and strong, ideal for warm days.</p>
+        <div class="star-rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
+        </div>
+        <p class="review-date">Reviewed on: 2023-10-03</p>
+      </div>
+    </div>
   </section>
 
   <!-- Testimonials Section -->

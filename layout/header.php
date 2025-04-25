@@ -1,5 +1,8 @@
 <?php
 $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+if (!isset($current_page)) {
+  $current_page = basename($_SERVER['PHP_SELF']);
+}
 ?>
 <link rel="stylesheet" href="src/css/styles.css">
 <header class="header">
@@ -16,7 +19,6 @@ $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         <li><a href="login.php" <?php echo $current_page === 'login.php' ? 'class="active"' : ''; ?>>Login</a></li>
         <li><a href="register.php" <?php echo $current_page === 'register.php' ? 'class="active"' : ''; ?>>Register</a></li>
       </ul>
-    </div>
-  </nav>
-</body>
-</html>
+    </nav>
+  </div>
+</header>

@@ -15,14 +15,37 @@ $current_page = basename($_SERVER['PHP_SELF']);
   <?php include 'layout/header.php'; ?>
 
   <!-- About Section -->
-  <section class="container" style="padding: 40px 0;">
+  <section class="about-container">
     <h2>Our Story</h2>
-    <p style="margin: 20px 0; line-height: 1.6;">
+    <p>
       BrewBuzz was founded by a group of passionate coffee enthusiasts who wanted to create a community where coffee lovers could share their experiences, discover new blends, and learn the art of brewing. Our mission is to connect people through their love for quality coffee and foster a culture of appreciation for every sip.
     </p>
-    <p style="line-height: 1.6;">
+    <p>
       Whether you're a fan of bold espressos, creamy lattes, or refreshing cold brews, BrewBuzz is your hub to explore, review, and connect with others who share your passion.
     </p>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews container animate-fade-in">
+    <h2>Community Reviews</h2>
+    <div class="reviews-container" id="reviewsContainer">
+      <div class="review-card">
+        <h4>Classic Espresso</h4>
+        <p>Bold and rich, perfect for a quick caffeine kick.</p>
+        <div class="star-rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+        </div>
+        <p class="review-date">Reviewed on: 2023-10-01</p>
+      </div>
+      <div class="review-card">
+        <h4>Creamy Latte</h4>
+        <p>Smooth and frothy, a coffee lover's delight.</p>
+        <div class="star-rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+        </div>
+        <p class="review-date">Reviewed on: 2023-10-02</p>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
