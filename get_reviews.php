@@ -1,5 +1,4 @@
 <?php
-session_start(['cookie_httponly' => true]);
 require_once 'includes/config.php';
 header('Content-Type: application/json');
 

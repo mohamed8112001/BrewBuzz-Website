@@ -1,17 +1,30 @@
 <?php
-session_start(['cookie_httponly' => true]);
 require_once 'includes/config.php';
 
-// Check if the request method is POST
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    $_SESSION['error'] = 'Invalid request method.';
-    header('Location: /index.php');
-    exit;
+// Validate and sanitize input
+$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
-}
-// Check CSRF token
-if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-    $_SESSION['error'] = 'Invalid CSRF token.';
-    header('Location: /index.php');
+if (!$name || !$email || !$password) {
+    $_SESSION['error'] = 'Invalid input data.';
+    header('Location: register.php');
     exit;
 }
+
+$passwordHash = password_hash($password, PASSWORD_DEFAULT); // Hash password
+
+// Insert user into the database
+$stmt = $connect->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+$stmt->bind_param('sss', $name, $email, $passwordHash);
+
+if ($stmt->execute()) {
+    $_SESSION['success'] = 'Account created successfully!';
+    header('Location: login.php');
+} else {
+    $_SESSION['error'] = 'Failed to create account.';
+    header('Location: register.php');
+}
+
+$stmt->close();
+?>

@@ -1,10 +1,7 @@
 <?php
-session_start(['cookie_httponly' => true]);
 $current_page = basename($_SERVER['PHP_SELF']);
 require_once 'includes/config.php';
 ?>
-
-
   <!-- التنقل -->
   <?php include 'layout/header.php'; ?>
 

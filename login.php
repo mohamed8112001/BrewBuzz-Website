@@ -1,5 +1,4 @@
 <?php
-session_start(['cookie_httponly' => true]);
 require_once 'includes/config.php';
 include 'layout/header.php';
 ?>
@@ -9,7 +8,6 @@ include 'layout/header.php';
     <h2>تسجيل دخول الأعضاء</h2>
     <h4>مرحبًا بك في موقعنا</h4>
     <form id="loginForm" class="modern-form" method="POST" action="login_handler.php">
-      <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
       <div class="form-group">
         <label for="email">البريد الإلكتروني</label>
         <input type="email" id="email" name="email" required aria-required="true" placeholder="أدخل بريدك الإلكتروني">

@@ -7,7 +7,6 @@ include 'layout/header.php';
   <div class="form-card">
     <h2>إنشاء حساب</h2>
     <form id="registerForm" class="modern-form" method="POST" action="register_handler.php">
-      <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
       <div class="form-group">
         <label for="name">الاسم</label>
         <input type="text" id="name" name="name" required aria-required="true" placeholder="أدخل اسمك">

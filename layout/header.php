@@ -1,5 +1,6 @@
 <?php
-$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+session_start();
+require_once 'includes/config.php';
 if (!isset($current_page)) {
   $current_page = basename($_SERVER['PHP_SELF']);
 }
