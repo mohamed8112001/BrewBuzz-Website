@@ -1,4 +1,4 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -6,7 +6,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #81603d, #4d3a26); /* Updated gradient for body background */
+  background: linear-gradient(135deg, #81603d, #4d3a26);   /*Updated gradient for body background */
   color: #333;
   min-height: 100vh;
   display: flex;
@@ -317,4 +317,4 @@ body {
   .hero p {
     font-size: 1rem;
   }
-} */
+} 
