@@ -1,7 +1,7 @@
 <?php
 define('DB_HOST', 'localhost');
-define('DB_USER', 'mohamed');
-define('DB_PASS', 'Mohamed@8112001');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 define('DB_NAME', 'brewbuzz_db');
 define('DB_PORT', 3307);
 define('DB_CHARSET', 'utf8mb4');

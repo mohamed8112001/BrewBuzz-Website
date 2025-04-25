@@ -4,13 +4,8 @@ $current_page = basename($_SERVER['PHP_SELF']);
 require_once 'includes/config.php';
 ?>
 
-<<<<<<< HEAD
-<body>
-  <!-- Navigation -->
-=======
 
   <!-- التنقل -->
->>>>>>> a92f5a57fc90b89f17281c62acd7681c11f037df
   <?php include 'layout/header.php'; ?>
 
   <!-- قسم البطل -->
