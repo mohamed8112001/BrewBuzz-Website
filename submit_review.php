@@ -4,7 +4,7 @@ require_once 'includes/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     $_SESSION['error'] = 'Invalid request method.';
-    header('Location: /index.php');
+    header('Location: index.php');
     exit;
 }
 

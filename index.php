@@ -3,79 +3,68 @@ session_start(['cookie_httponly' => true]);
 $current_page = basename($_SERVER['PHP_SELF']);
 require_once 'includes/config.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BrewBuzz - Discover top coffee blends, share reviews, and join a vibrant coffee community.">
-  <meta name="keywords" content="coffee, BrewBuzz, espresso, latte, cold brew, coffee reviews">
-  <title>BrewBuzz - Top Coffee Picks</title>
-  <link rel="icon" href="/src/images/favicon.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="/src/css/styles.css">
-</head>
-<body>
-  <!-- Navigation -->
+
+
+  <!-- التنقل -->
   <?php include 'layout/header.php'; ?>
 
-  <!-- Hero Section -->
-  <section class="hero animate-fade-in" aria-label="Hero section">
+  <!-- قسم البطل -->
+  <section class="hero animate-fade-in" aria-label="قسم البطل">
     <div class="hero-overlay"></div>
     <div class="hero-content container animate-slide-up">
       <div class="hero-logo">BrewBuzz</div>
-      <h1>Start Your Day with a Perfect Coffee</h1>
-      <p class="hero-quote">"Coffee is the common man's gold, and like gold, it brings to every person the feeling of luxury and nobility." - Dr. Nat Orite</p>
-      <a href="#coffee-picks" class="btn hero-btn" aria-label="Explore coffee picks">Discover Our Blends</a>
+      <h1>ابدأ يومك بقهوة مثالية</h1>
+      <p class="hero-quote">"القهوة هي ذهب الرجل العادي، ومثل الذهب، فإنها تجلب لكل شخص شعورًا بالرفاهية والنبل." - د. نات أورايت</p>
+      <a href="#coffee-picks" class="btn hero-btn" aria-label="استكشف اختيارات القهوة">اكتشف خلطاتنا</a>
     </div>
   </section>
 
-  <!-- Why BrewBuzz Section -->
+  <!-- قسم لماذا BrewBuzz -->
   <section class="why-brewbuzz container animate-fade-in">
-    <h2>Why BrewBuzz?</h2>
+    <h2>لماذا BrewBuzz؟</h2>
     <div class="why-grid">
       <div class="why-card">
         <i class="fas fa-coffee"></i>
-        <h3>Premium Blends</h3>
-        <p>Curated coffee blends sourced from the finest beans worldwide.</p>
+        <h3>خلطات مميزة</h3>
+        <p>خلطات قهوة مختارة بعناية من أجود الحبوب في العالم.</p>
       </div>
       <div class="why-card">
         <i class="fas fa-users"></i>
-        <h3>Vibrant Community</h3>
-        <p>Join coffee lovers to share reviews and brewing tips.</p>
+        <h3>مجتمع نابض بالحياة</h3>
+        <p>انضم إلى عشاق القهوة لمشاركة التقييمات ونصائح التخمير.</p>
       </div>
       <div class="why-card">
         <i class="fas fa-leaf"></i>
-        <h3>Sustainable Practices</h3>
-        <p>Ethically sourced coffee with eco-friendly packaging.</p>
+        <h3>ممارسات مستدامة</h3>
+        <p>قهوة من مصادر أخلاقية مع تغليف صديق للبيئة.</p>
       </div>
     </div>
   </section>
 
-  <!-- Featured Coffee Blends -->
+  <!-- اختيارات القهوة المميزة -->
   <section class="coffee-picks container animate-fade-in" id="coffee-picks">
-    <h2>Top Coffee Picks</h2>
+    <h2>أفضل اختيارات القهوة</h2>
     <div class="coffee-grid">
       <div class="coffee-card animate-slide-up">
-        <img src="src/images/img3.webp" alt="Classic Espresso" loading="lazy">
-        <h3>Classic Espresso</h3>
-        <p>Bold and rich, perfect for a quick caffeine kick.</p>
+        <img src="src/images/img3.webp" alt="إسبريسو كلاسيكي" loading="lazy">
+        <h3>إسبريسو كلاسيكي</h3>
+        <p>جريء وغني، مثالي لجرعة كافيين سريعة.</p>
         <div class="star-rating" data-rating="4">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
         </div>
       </div>
       <div class="coffee-card animate-slide-up">
-        <img src="src/images/image2.jpg" alt="Creamy Latte" loading="lazy">
-        <h3>Creamy Latte</h3>
-        <p>Smooth and frothy, a coffee lover's delight.</p>
+        <img src="src/images/image2.jpg" alt="لاتيه كريمي" loading="lazy">
+        <h3>لاتيه كريمي</h3>
+        <p>ناعم ورغوي، متعة لعشاق القهوة.</p>
         <div class="star-rating" data-rating="5">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
       </div>
       <div class="coffee-card animate-slide-up">
-        <img src="src/images/berw.jpeg" alt="Cold Brew" loading="lazy">
-        <h3>Cold Brew</h3>
-        <p>Refreshing and strong, ideal for warm days.</p>
+        <img src="src/images/berw.jpeg" alt="قهوة باردة" loading="lazy">
+        <h3>قهوة باردة</h3>
+        <p>منعشة وقوية، مثالية للأيام الدافئة.</p>
         <div class="star-rating" data-rating="3">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
         </div>
@@ -83,103 +72,103 @@ require_once 'includes/config.php';
     </div>
   </section>
 
-  <!-- Review Form Section -->
+  <!-- قسم نموذج التقييم -->
   <section class="form-section container animate-fade-in">
     <div class="form-card">
-      <h2>Share Your Review</h2>
+      <h2>شارك تقييمك</h2>
       <?php
       if (isset($_SESSION['success'])) {
-          echo '<p class="success">' . $_SESSION['success'] . '</p>';
+          echo '<p class="success">' . htmlspecialchars($_SESSION['success']) . '</p>';
           unset($_SESSION['success']);
       }
       if (isset($_SESSION['error'])) {
-          echo '<p class="error">' . $_SESSION['error'] . '</p>';
+          echo '<p class="error">' . htmlspecialchars($_SESSION['error']) . '</p>';
           unset($_SESSION['error']);
       }
       ?>
       <form id="reviewForm" class="modern-form" method="POST" action="submit_review.php">
+        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
         <div class="form-group">
-          <input type="text" id="coffee_name" name="coffee_name" required aria-required="true" placeholder="Coffee Name">
+          <label for="coffee_name">اسم القهوة</label>
+          <input type="text" id="coffee_name" name="coffee_name" required aria-required="true" placeholder="أدخل اسم القهوة">
         </div>
         <div class="form-group">
-          <label>Rating</label>
-          <div class="star-rating" id="reviewStars">
-            <i class="fas fa-star" data-value="1" role="button" aria-label="1 star"></i>
-            <i class="fas fa-star" data-value="2" role="button" aria-label="2 stars"></i>
-            <i class="fas fa-star" data-value="3" role="button" aria-label="3 stars"></i>
-            <i class="fas fa-star" data-value="4" role="button" aria-label="4 stars"></i>
-            <i class="fas fa-star" data-value="5" role="button" aria-label="5 stars"></i>
+          <label for="reviewStars">التقييم</label>
+          <div class="star-rating" id="reviewStars" role="radiogroup" aria-label="اختر تقييم من 1 إلى 5 نجوم">
+            <i class="far fa-star" data-value="1" role="radio" aria-checked="false" aria-label="نجمة واحدة" tabindex="0"></i>
+            <i class="far fa-star" data-value="2" role="radio" aria-checked="false" aria-label="نجمتان" tabindex="0"></i>
+            <i class="far fa-star" data-value="3" role="radio" aria-checked="false" aria-label="ثلاث نجوم" tabindex="0"></i>
+            <i class="far fa-star" data-value="4" role="radio" aria-checked="false" aria-label="أربع نجوم" tabindex="0"></i>
+            <i class="far fa-star" data-value="5" role="radio" aria-checked="false" aria-label="خمس نجوم" tabindex="0"></i>
           </div>
           <input type="hidden" id="ratingInput" name="rating" required aria-required="true">
         </div>
         <div class="form-group">
-          <textarea id="comment" name="comment" required aria-required="true" placeholder="Your Comment"></textarea>
+          <label for="comment">تعليقك</label>
+          <textarea id="comment" name="comment" required aria-required="true" placeholder="أدخل تعليقك"></textarea>
         </div>
         <p id="formError" class="error" role="alert"></p>
-        <button type="submit" class="btn btn-circle animate-pulse">Submit Review</button>
+        <button type="submit" class="btn btn-circle animate-pulse">إرسال التقييم</button>
       </form>
     </div>
   </section>
 
-  <!-- Reviews Section -->
+  <!-- قسم التقييمات -->
   <section class="reviews container animate-fade-in">
-    <h2>Community Reviews</h2>
+    <h2>تقييمات المجتمع</h2>
     <div class="reviews-container" id="reviewsContainer">
-      <!-- Example Review Card -->
       <div class="review-card">
-        <h4>Classic Espresso</h4>
-        <p>Bold and rich, perfect for a quick caffeine kick.</p>
+        <h4>إسبريسو كلاسيكي</h4>
+        <p>جريء وغني، مثالي لجرعة كافيين سريعة.</p>
         <div class="star-rating">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
         </div>
-        <p class="review-date">Reviewed on: 2023-10-01</p>
+        <p class="review-date">تم التقييم في: 2023-10-01</p>
       </div>
       <div class="review-card">
-        <h4>Creamy Latte</h4>
-        <p>Smooth and frothy, a coffee lover's delight.</p>
+        <h4>لاتيه كريمي</h4>
+        <p>ناعم ورغوي، متعة لعشاق القهوة.</p>
         <div class="star-rating">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
         </div>
-        <p class="review-date">Reviewed on: 2023-10-02</p>
+        <p class="review-date">تم التقييم في: 2023-10-02</p>
       </div>
       <div class="review-card">
-        <h4>Cold Brew</h4>
-        <p>Refreshing and strong, ideal for warm days.</p>
+        <h4>قهوة باردة</h4>
+        <p>منعشة وقوية، مثالية للأيام الدافئة.</p>
         <div class="star-rating">
           <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
         </div>
-        <p class="review-date">Reviewed on: 2023-10-03</p>
+        <p class="review-date">تم التقييم في: 2023-10-03</p>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials Section -->
+  <!-- قسم الشهادات -->
   <section class="testimonials container animate-fade-in">
-    <h2>What Our Customers Say</h2>
+    <h2>ماذا يقول عملاؤنا</h2>
     <div class="testimonial-grid">
       <div class="testimonial-card">
-        <p>"BrewBuzz's espresso is a game-changer! Perfectly balanced and bold."</p>
-        <h4>- Sarah M.</h4>
+        <p>"إسبريسو BrewBuzz يغير قواعد اللعبة! متوازن وجريء بشكل مثالي."</p>
+        <h4>- سارة م.</h4>
       </div>
       <div class="testimonial-card">
-        <p>"The community here is amazing. I love sharing my coffee recipes!"</p>
-        <h4>- Ahmed K.</h4>
+        <p>"المجتمع هنا رائع. أحب مشاركة وصفات القهوة الخاصة بي!"</p>
+        <h4>- أحمد ك.</h4>
       </div>
       <div class="testimonial-card">
-        <p>"Cold brew is my go-to, and BrewBuzz nails it every time."</p>
-        <h4>- Emily R.</h4>
+        <p>"القهوة الباردة هي خياري المفضل، وBrewBuzz يتقنها في كل مرة."</p>
+        <h4>- إميلي ر.</h4>
       </div>
     </div>
   </section>
 
-  <!-- Join Community Section -->
+  <!-- قسم الانضمام للمجتمع -->
   <section class="join-community container animate-fade-in">
-    <h2>Join Our Coffee Community</h2>
-    <p>Sign up to share your reviews, discover new blends, and connect with fellow coffee enthusiasts.</p>
-    <a href="register.php" class="btn btn-circle" aria-label="Join now">Join Now</a>
+    <h2>انضم إلى مجتمع القهوة الخاص بنا</h2>
+    <p>سجل لمشاركة تقييماتك، واكتشاف خلطات جديدة، والتواصل مع عشاق القهوة.</p>
+    <a href="register.php" class="btn btn-circle" aria-label="انضم الآن">انضم الآن</a>
   </section>
 
-  <!-- Footer -->
+  <!-- الفوتر -->
   <?php include 'layout/footer.php'; ?>
-</body>
-</html>

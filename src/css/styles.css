@@ -1,82 +1,44 @@
-/* CSS Variables */
-:root {
-  --primary: #3c2f2f;
-  --accent: #f4a261;
-  --secondary: #ce755f;
-  --text: #333;
-  --bg: #fff;
-  --gradient: linear-gradient(135deg, #ac968e, #c58b86);
-}
+ /* استيراد خط Tajawal للعربية */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
 
-/* Reset */
+/* الإعدادات العامة */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-/* Enhanced Background */
 body {
-  background: var(--gradient), url('https://images.unsplash.com/photo-1511920170033-f8396924c348') no-repeat center/cover;
-  background-attachment: fixed;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Tajawal', sans-serif;
   line-height: 1.6;
-  color: var(--text);
+  background: #f8f1e9;
+  direction: rtl;
+  color: #3c2f2f;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px; /* Reduced padding for better responsiveness */
+  padding: 20px;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-.animate-fade-in {
-  animation: fadeIn 1s ease-in;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.8s ease-out;
-}
-
-.animate-pulse {
-  animation: pulse 2s infinite;
-}
-
-/* Header */
+/* الهيدر */
 .header {
-  background: var(--primary);
+  background: linear-gradient(135deg, #3c2f2f, #6b4e31);
   color: #fff;
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  padding: 15px 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 .header .container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: 2.2em;
+  font-weight: 700;
   color: #fff;
   text-decoration: none;
 }
@@ -84,56 +46,46 @@ body {
 .nav-menu ul {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 30px;
 }
 
 .nav-menu a {
   color: #fff;
   text-decoration: none;
+  font-size: 1.2em;
   transition: color 0.3s;
 }
 
-.nav-menu a:hover,
-.nav-menu a.active {
-  color: var(--accent);
+.nav-menu a.active,
+.nav-menu a:hover {
+  color: #e67e22;
 }
 
-/* Hamburger Menu */
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
+  cursor: pointer;
   background: none;
   border: none;
-  cursor: pointer;
-  padding: 10px;
 }
 
 .hamburger span {
-  width: 25px;
-  height: 3px;
+  width: 30px;
+  height: 4px;
   background: #fff;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
 
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
-}
-
-/* Hero */
+/* قسم البطل */
 .hero {
+  z-index: -1;
   position: relative;
-  background: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085') no-repeat center/cover, var(--primary);
-  padding: 6rem 0;
+  background: url('https://images.unsplash.com/photo-1511920170033-f8396924c348') no-repeat center/cover;
+  color: #fff;
   text-align: center;
+  padding: 140px 20px;
+  min-height: 450px;
 }
 
 .hero-overlay {
@@ -142,368 +94,179 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(60, 47, 47, 0.7);
 }
 
 .hero-content {
   position: relative;
-  color: #fff;
+  z-index: 1;
 }
 
 .hero-logo {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.hero h1 {
-  font-size: 2.8rem;
-  margin-bottom: 1rem;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  font-size: 3.5em;
+  font-weight: 700;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
 }
 
 .hero-quote {
   font-style: italic;
-  margin-bottom: 2rem;
-  font-size: 1.1rem;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  font-size: 1.3em;
+  margin: 25px 0;
+  opacity: 0.9;
 }
 
+/* الأزرار */
 .btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background: var(--accent);
+  background: linear-gradient(135deg, #e67e22, #d35400);
   color: #fff;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.2em;
   text-decoration: none;
-  border-radius: 25px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
 }
 
 .btn:hover {
-  transform: scale(1.08); /* Slightly increased hover effect */
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Enhanced shadow for better visibility */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .btn-circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  font-size: 0.9rem;
-  background: var(--accent);
-  border: 2px solid #fff;
+  border-radius: 30px;
 }
 
-/* Why BrewBuzz */
+.animate-pulse {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* قسم لماذا BrewBuzz */
 .why-brewbuzz {
-  padding: 3rem 0;
   text-align: center;
+  padding: 70px 20px;
+  background: #fff;
 }
 
 .why-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
 .why-card {
-  background: #fefae0; /* Light cream background for cards */
-  color: #3c2f2f; /* Dark brown text for better contrast */
-  border: 1px solid #fcc439; /* Subtle border for definition */
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
 }
 
 .why-card:hover {
-  background: #faedcd; /* Slightly darker cream on hover */
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  transform: translateY(-8px);
 }
 
 .why-card i {
-  font-size: 2rem;
-  color: var(--accent);
-  margin-bottom: 1rem;
+  font-size: 3em;
+  color: #e67e22;
+  margin-bottom: 20px;
 }
 
-/* Coffee Picks */
+/* قسم اختيارات القهوة */
 .coffee-picks {
-  padding: 3rem 0;
   text-align: center;
+  padding: 70px 20px;
+  background: #f8f1e9;
 }
 
 .coffee-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
 .coffee-card {
-  background: #fefae0; /* Light cream background for cards */
-  color: #3c2f2f; /* Dark brown text for better contrast */
-  border: 1px solid #e9c46a; /* Subtle border for definition */
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+  padding: 10px;
 }
 
 .coffee-card:hover {
-  background: #faedcd; /* Slightly darker cream on hover */
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  transform: translateY(-8px);
 }
 
 .coffee-card img {
-  max-width: 100%;
-  border-radius: 5px;
-  margin-bottom: 1rem;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
 }
 
-.star-rating {
-  color: var(--accent);
-  margin: 0.5rem 0;
+.coffee-card h3 {
+  margin: 20px 0;
+  font-size: 1.7em;
 }
 
-/* Reviews */
-.reviews {
-  padding: 3rem 0;
-  text-align: center;
-}
-
-.review {
-  background: var(--bg);
-  border-radius: 10px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin: 1rem 0;
-}
-
-/* Refined Review Card Styling */
-.review-card {
-  background: #fefae0; /* Light cream background for cards */
-  color: #3c2f2f; /* Dark brown text for better contrast */
-  border: 1px solid #e9c46a; /* Subtle border for definition */
-  border-radius: 15px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  margin: 1.5rem 0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.review-card:hover {
-  background: #faedcd; /* Slightly darker cream on hover */
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-.review-card h4 {
-  font-size: 1.4rem;
-  color: var(--primary);
-  margin-bottom: 0.5rem;
-}
-
-.review-card p {
-  font-size: 1rem;
-  color: var(--text);
-  line-height: 1.5;
-}
-
-.review-card .star-rating {
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
-.review-card .star-rating i {
-  font-size: 1.2rem;
-}
-
-.review-card .review-date {
-  font-size: 0.9rem;
-  color: #888;
-  margin-top: auto;
-  text-align: right;
-}
-
-/* Responsive Adjustments for Review Cards */
-@media (max-width: 768px) {
-  .review-card {
-    padding: 1rem;
-  }
-
-  .review-card h4 {
-    font-size: 1.2rem;
-  }
-
-  .review-card p {
-    font-size: 0.9rem;
-  }
-
-  .review-card .star-rating i {
-    font-size: 1rem;
-  }
-}
-
-/* Testimonials */
-.testimonials {
-  padding: 3rem 0;
-  background: #f9f9f9;
-  text-align: center;
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
-}
-
-/* Refined Testimonial Card Styling */
-.testimonial-card {
-  background: #fefae0; /* Light cream background for cards */
-  color: #3c2f2f; /* Dark brown text for better contrast */
-  border: 1px solid #e9c46a; /* Subtle border for definition */
-  border-radius: 15px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.testimonial-card:hover {
-  background: #faedcd; /* Slightly darker cream on hover */
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-.testimonial-card p {
-  font-size: 1rem;
-  color: var(--text);
-  line-height: 1.5;
-  margin-bottom: 1rem;
-  font-style: italic;
-}
-
-.testimonial-card h4 {
-  font-size: 1.2rem;
-  color: var(--primary);
-  font-weight: bold;
-}
-
-/* Responsive Adjustments for Testimonial Cards */
-@media (max-width: 768px) {
-  .testimonial-card {
-    padding: 1rem;
-  }
-
-  .testimonial-card p {
-    font-size: 0.9rem;
-  }
-
-  .testimonial-card h4 {
-    font-size: 1rem;
-  }
-}
-
-/* Join Community */
-.join-community {
-  padding: 3rem 0;
-  text-align: center;
-  background: var(--gradient);
-  color: #fff;
-}
-
-.join-community h2 {
-  margin-bottom: 1rem;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-}
-
-.join-community p {
-  margin-bottom: 2rem;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-}
-
-/* Modern Form Styling */
+/* أنماط النماذج */
 .form-section {
-  padding: 4rem 0;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 70px 20px;
+  text-align: center;
+  background: #fff;
 }
 
 .form-card {
-  background: var(--gradient);
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 90%;
-  color: #fff;
-  text-align: center;
+  background: #fff;
+  padding: 35px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.form-card h2 {
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
-}
-
-.modern-form .form-group {
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.modern-form input,
-.modern-form textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.9);
-  font-size: 1rem;
-  color: #333;
-}
-
-.modern-form input::placeholder,
-.modern-form textarea::placeholder {
-  color: #999;
-}
-
-.modern-form input:focus,
-.modern-form textarea:focus {
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-.modern-form textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-.modern-form .star-rating {
+.modern-form {
   display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin: 0.5rem 0;
+  flex-direction: column;
+  gap: 25px;
 }
 
-.modern-form label {
+.form-group {
+  text-align: right;
+}
+
+.form-group label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #3c2f2f;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1.1em;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #e67e22;
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
 }
 
 .password-group {
@@ -512,183 +275,193 @@ body {
 
 .toggle-password {
   position: absolute;
-  right: 1rem;
   top: 50%;
+  left: 15px;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #333;
+  font-size: 1.4em;
+  color: #666;
+  transition: color 0.3s;
 }
 
-.form-footer {
-  margin-top: 1rem;
-  font-size: 0.9rem;
+.toggle-password:hover {
+  color: #e67e22;
 }
 
-.form-footer a {
-  color: #fff;
-  text-decoration: underline;
+/* تقييم النجوم */
+.star-rating {
+  
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
-.form-footer a:hover {
-  color: #f0f0f0;
-}
-
-.error {
-  color: #ff4d4d;
-  font-size: 0.9rem;
-  margin: 0.5rem 0;
-}
-
-/* Contact Form Styling */
-#contactForm {
-  background: #fefae0; /* Light cream background */
-  border: 1px solid #e9c46a; /* Subtle border for definition */
-  border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-#contactForm .form-group {
-  margin-bottom: 1.5rem;
-}
-
-#contactForm label {
-  display: block;
-  font-size: 1rem;
-  color: var(--primary);
-  margin-bottom: 0.5rem;
-}
-
-#contactForm input,
-#contactForm textarea {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background: #fff;
-  font-size: 1rem;
-  color: var(--text);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#contactForm input:focus,
-#contactForm textarea:focus {
-  border-color: var(--accent);
-  box-shadow: 0 0 5px rgba(244, 162, 97, 0.5); /* Accent color shadow */
-  outline: none;
-}
-
-#contactForm textarea {
-  min-height: 120px;
-  resize: vertical;
-}
-
-#contactForm .btn {
-  display: inline-block;
-  width: 100%;
-  padding: 0.75rem;
-  background: var(--accent);
-  color: #fff;
-  font-size: 1rem;
-  font-weight: bold;
-  text-align: center;
-  border: none;
-  border-radius: 10px;
+.star-rating i {
+  font-size: 2em;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.3s ease;
+  transition: color 0.2s, transform 0.2s;
 }
 
-#contactForm .btn:hover {
-  background: #e76f51; /* Slightly darker accent color */
-  transform: scale(1.05);
+.star-rating .far.fa-star {
+  color: #ccc;
 }
 
-#contactError {
-  color: #d62828; /* Red for error messages */
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
+.star-rating .fas.fa-star {
+  color: #f1c40f;
+}
+
+.star-rating i:hover,
+.star-rating i.filled {
+  transform: scale(1.2);
+}
+
+.star-rating i:focus {
+  outline: 2px solid #e67e22;
+  outline-offset: 2px;
+}
+
+/* رسائل الخطأ والنجاح */
+.error {
+  color: #c0392b;
+  font-size: 1em;
+  margin-top: 15px;
+  background: #fdedec;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.success {
+  color: #27ae60;
+  font-size: 1em;
+  margin-top: 15px;
+  background: #e8f8f5;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* قسم التقييمات */
+.reviews {
+  padding: 70px 20px;
   text-align: center;
+  background: #f8f1e9;
 }
 
-/* Responsive Adjustments for Contact Form */
-@media (max-width: 768px) {
-  #contactForm {
-    padding: 1.5rem;
-  }
-
-  #contactForm input,
-  #contactForm textarea {
-    font-size: 0.9rem;
-  }
-
-  #contactForm .btn {
-    font-size: 0.9rem;
-  }
+.reviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
-/* About Section Styling */
-.about-container {
-  background: #fefae0; /* Light cream background */
-  border: 1px solid #e9c46a; /* Subtle border for definition */
+
+.reviews-container {
+ margin: 10px; 
+}
+
+
+.review-card {
+  background: #fff;
+  padding: 30px;
   border-radius: 15px;
-  padding: 2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin: 2rem 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+.review-card p {
+  margin:10px ;
+}
+
+.review-card:hover {
+  transform: translateY(-8px);
+}
+
+.review-date {
+  font-size: 1em;
+  color: #7f8c8d;
+}
+
+/* قسم الشهادات */
+.testimonials {
+  padding: 70px 20px;
   text-align: center;
+  background: #fff;
 }
 
-.about-container h2 {
-  font-size: 2rem;
-  color: var(--primary);
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 
-.about-container p {
-  font-size: 1.1rem;
-  color: var(--text);
-  line-height: 1.8;
-  margin-bottom: 1rem;
+.testimonial-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
 }
 
-.about-container p:last-child {
-  margin-bottom: 0; /* Remove margin for the last paragraph */
+.testimonial-card:hover {
+  transform: translateY(-8px);
 }
 
-/* Responsive Adjustments for About Section */
-@media (max-width: 768px) {
-  .about-container {
-    padding: 1.5rem;
-  }
-
-  .about-container h2 {
-    font-size: 1.8rem;
-  }
-
-  .about-container p {
-    font-size: 1rem;
-  }
-}
-
-/* Footer */
-footer {
-  background: var(--primary);
-  color: rgba(255, 255, 255, 0.8); /* Improved readability */
+/* قسم الانضمام للمجتمع */
+.join-community {
   text-align: center;
-  padding: 1rem 0;
+  padding: 70px 20px;
+  background: linear-gradient(135deg, #f8f1e9, #e6d7c3);
+  /* background-color: #27ae60; */
+}
+.join-community p{
+  margin: 20px;
 }
 
-/* Responsive */
+/* قسم حول */
+.about-container {
+  width: 70%;
+  margin: 20px auto;
+  padding: 70px 20px;
+  text-align: center;
+  background: #fff;
+}
+
+/* الفوتر */
+.footer {
+  background: linear-gradient(135deg, #3c2f2f, #6b4e31);
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* التحريكات */
+.animate-fade-in {
+  animation: fadeIn 1.2s ease-in;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* التصميم المتجاوب */
 @media (max-width: 768px) {
   .nav-menu {
+    z-index: 100;
     display: none;
     position: absolute;
-    top: 100%;
+    top: 80px;
     left: 0;
     width: 100%;
-    background: var(--primary);
-    padding: 1rem;
+    background: #3c2f2f;
+    padding: 25px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   }
 
   .nav-menu.active {
@@ -697,32 +470,57 @@ footer {
 
   .nav-menu ul {
     flex-direction: column;
-    align-items: center;
+    gap: 20px;
   }
 
   .hamburger {
     display: flex;
   }
 
-  .hero h1 {
-    font-size: 1.8rem; /* Adjusted for smaller screens */
-  }
-
-  .hero-quote {
-    font-size: 0.9rem; /* Reduced font size for better fit */
-  }
-
-  .btn {
-    padding: 0.6rem 1.2rem; /* Adjusted button size for smaller screens */
+  .hero {
+    padding: 100px 20px;
   }
 
   .hero-logo {
-    font-size: 2rem;
+    font-size: 3em;
   }
 
-  .coffee-grid,
-  .why-grid,
-  .testimonial-grid {
-    grid-template-columns: 1fr;
+  .form-card {
+    padding: 25px;
+  }
+
+  .star-rating i {
+    font-size: 1.7em;
+  }
+
+  .coffee-card img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 12px 24px;
+    font-size: 1em;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 12px;
+  }
+
+  .star-rating i {
+    font-size: 1.5em;
+  }
+
+  .hero-logo {
+    font-size: 2.5em;
+  }
+
+  .coffee-card h3,
+  .why-card h3,
+  .review-card h4,
+  .testimonial-card p {
+    font-size: 1.3em;
   }
 }

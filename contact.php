@@ -1,24 +1,26 @@
 <?php include('layout/header.php') ?>
 
-  <!-- Contact Section -->
-  <section class="container" style="padding: 40px 0;">
-    <h2>Connect With Us</h2>
-    <form id="contactForm" style="max-width: 500px; margin: 20px auto;">
+<section class="form-section container animate-fade-in">
+  <div class="form-card">
+    <h2>تواصل معنا</h2>
+    <form id="contactForm" class="modern-form" method="POST" action="contact_handler.php">
+      <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" required>
+        <label for="name">الاسم</label>
+        <input type="text" id="name" name="name" required aria-required="true" placeholder="أدخل اسمك">
       </div>
       <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" required>
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" required aria-required="true" placeholder="أدخل بريدك الإلكتروني">
       </div>
       <div class="form-group">
-        <label for="message">Message</label>
-        <textarea id="message" required></textarea>
+        <label for="message">الرسالة</label>
+        <textarea id="message" name="message" required aria-required="true" placeholder="أدخل رسالتك"></textarea>
       </div>
-      <p id="contactError" class="error"></p>
-      <button type="submit" class="btn">Send Message</button>
+      <p id="contactError" class="error" role="alert"></p>
+      <button type="submit" class="btn btn-circle animate-pulse">إرسال الرسالة</button>
     </form>
-  </section>
+  </div>
+</section>
 
-  <?php include('layout/footer.php') ?>
+<?php include('layout/footer.php') ?>
