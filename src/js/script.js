@@ -1,125 +1,165 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Hamburger Menu
-  const hamburger = document.querySelector('.hamburger');
-  const navMenu = document.querySelector('.nav-menu');
-  
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', !isExpanded);
-  });
-
-  // Close menu when clicking a link
-  document.querySelectorAll('.nav-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
-      hamburger.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // Password Toggle
-  document.querySelectorAll('.toggle-password').forEach(toggle => {
-    toggle.addEventListener('click', () => {
-      const input = toggle.previousElementSibling;
-      const isPassword = input.type === 'password';
-      input.type = isPassword ? 'text' : 'password';
-      toggle.classList.toggle('fa-eye', isPassword);
-      toggle.classList.toggle('fa-eye-slash', !isPassword);
-    });
-  });
-
-  // Review Modal
-  const reviewModal = document.getElementById('reviewModal');
-  const openReviewModal = document.getElementById('openReviewModal');
-  const closeModal = document.getElementById('closeModal');
+  // وظيفة تقييم النجوم (index.php)
   const reviewForm = document.getElementById('reviewForm');
-  const formError = document.getElementById('formError');
-  const reviewStars = document.querySelectorAll('#reviewStars i');
-  const ratingInput = document.getElementById('ratingInput');
+  if (reviewForm) {
+    const stars = document.querySelectorAll('#reviewStars i');
+    const ratingInput = document.getElementById('ratingInput');
+    const errorElement = document.getElementById('formError');
 
-  // Open modal
-  openReviewModal.addEventListener('click', () => {
-    reviewModal.style.display = 'flex';
-    reviewModal.setAttribute('aria-hidden', 'false');
-  });
+    const updateStars = (rating) => {
+      stars.forEach(star => {
+        const value = parseInt(star.getAttribute('data-value'));
+        star.classList.toggle('fas', value <= rating);
+        star.classList.toggle('far', value > rating);
+        star.classList.toggle('filled', value <= rating);
+        star.setAttribute('aria-checked', value <= rating ? 'true' : 'false');
+      });
+    };
 
-  // Close modal
-  closeModal.addEventListener('click', () => {
-    reviewModal.style.display = 'none';
-    reviewModal.setAttribute('aria-hidden', 'true');
-    reviewForm.reset();
-    formError.textContent = '';
-  });
+    const resetStars = () => {
+      updateStars(ratingInput.value ? parseInt(ratingInput.value) : 0);
+    };
 
-  // Star rating selection
-  reviewStars.forEach(star => {
-    star.addEventListener('click', () => {
-      const rating = star.getAttribute('data-value');
-      ratingInput.value = rating;
-      reviewStars.forEach(s => {
-        s.classList.toggle('fas', s.getAttribute('data-value') <= rating);
-        s.classList.toggle('far', s.getAttribute('data-value') > rating);
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        const rating = star.getAttribute('data-value');
+        ratingInput.value = rating;
+        updateStars(parseInt(rating));
+        errorElement.textContent = '';
+      });
+
+      star.addEventListener('mouseover', () => {
+        const rating = star.getAttribute('data-value');
+        updateStars(parseInt(rating));
+      });
+
+      star.addEventListener('mouseout', resetStars);
+
+      star.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const rating = star.getAttribute('data-value');
+          ratingInput.value = rating;
+          updateStars(parseInt(rating));
+          errorElement.textContent = '';
+        }
       });
     });
-  });
 
-  // Review form submission
-  reviewForm.addEventListener('submit', async e => {
-    e.preventDefault();
-    const coffeeName = document.getElementById('coffee_name').value.trim();
-    const rating = ratingInput.value;
-    const comment = document.getElementById('comment').value.trim();
-    const csrfToken = reviewForm.getAttribute('data-csrf');
-
-    if (!coffeeName || !rating || !comment) {
-      formError.textContent = 'All fields are required.';
-      return;
-    }
-
-    try {
-      const response = await fetch('/submit_review.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ coffee_name: coffeeName, rating, comment, csrf_token: csrfToken }),
-      });
-
-      const result = await response.json();
-      if (result.success) {
-        reviewModal.style.display = 'none';
-        reviewModal.setAttribute('aria-hidden', 'true');
-        reviewForm.reset();
-        formError.textContent = '';
-        loadReviews();
-      } else {
-        formError.textContent = result.message || 'Failed to submit review.';
+    reviewForm.addEventListener('submit', (e) => {
+      if (!ratingInput.value) {
+        e.preventDefault();
+        errorElement.textContent = 'يرجى اختيار تقييم.';
+        return;
       }
-    } catch (error) {
-      formError.textContent = 'An error occurred. Please try again.';
-    }
-  });
+      errorElement.textContent = '';
+      // حفظ التقييم في localStorage (لأغراض العرض)
+      const review = {
+        coffeeName: document.getElementById('coffee_name').value,
+        rating: parseInt(ratingInput.value),
+        comment: document.getElementById('comment').value,
+        date: new Date().toISOString().split('T')[0]
+      };
+      const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+      reviews.push(review);
+      localStorage.setItem('reviews', JSON.stringify(reviews));
+    });
 
-  // Load reviews dynamically
-  async function loadReviews() {
-    const reviewsContainer = document.getElementById('reviewsContainer');
-    try {
-      const response = await fetch('/get_reviews.php');
-      const reviews = await response.json();
-      reviewsContainer.innerHTML = reviews.map(review => `
-        <div class="review animate-slide-up">
-          <h4>${review.coffee_name}</h4>
-          <div class="star-rating" data-rating="${review.rating}">
-            ${[...Array(5)].map((_, i) => `<i class="${i < review.rating ? 'fas' : 'far'} fa-star"></i>`).join('')}
-          </div>
-          <p>${review.comment}</p>
-          <small>${new Date(review.created_at).toLocaleDateString()}</small>
-        </div>
-      `).join('');
-    } catch (error) {
-      reviewsContainer.innerHTML = '<p>Failed to load reviews.</p>';
-    }
+    resetStars();
   }
 
-  loadReviews();
+  // التحقق من نموذج التواصل (contact.php)
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    const errorElement = document.getElementById('contactError');
+    contactForm.addEventListener('submit', (e) => {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      if (!name || !email || !message) {
+        e.preventDefault();
+        errorElement.textContent = 'يرجى ملء جميع الحقول.';
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        e.preventDefault();
+        errorElement.textContent = 'يرجى إدخال بريد إلكتروني صالح.';
+      } else {
+        errorElement.textContent = '';
+      }
+    });
+  }
+
+  // التحقق من نموذج تسجيل الدخول (login.php)
+  const loginForm = document.getElementById('loginForm');
+  if (loginForm) {
+    const errorElement = document.getElementById('loginError');
+    loginForm.addEventListener('submit', (e) => {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      if (!email || !password) {
+        e.preventDefault();
+        errorElement.textContent = 'يرجى ملء جميع الحقول.';
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        e.preventDefault();
+        errorElement.textContent = 'يرجى إدخال بريد إلكتروني صالح.';
+      } else {
+        errorElement.textContent = '';
+      }
+    });
+  }
+
+  // التحقق من نموذج التسجيل (register.php)
+  const registerForm = document.getElementById('registerForm');
+  if (registerForm) {
+    const errorElement = document.getElementById('registerError');
+    registerForm.addEventListener('submit', (e) => {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      if (!name || !email || !password) {
+        e.preventDefault();
+        errorElement.textContent = 'يرجى ملء جميع الحقول.';
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        e.preventDefault();
+        errorElement.textContent = 'يرجى إدخال بريد إلكتروني صالح.';
+      } else if (password.length < 6) {
+        e.preventDefault();
+        errorElement.textContent = 'كلمة المرور يجب أن تكون 6 أحرف على الأقل.';
+      } else {
+        errorElement.textContent = '';
+      }
+    });
+  }
+
+  // تبديل رؤية كلمة المرور (login.php, register.php)
+  const togglePasswordIcons = document.querySelectorAll('.toggle-password');
+  togglePasswordIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      const input = icon.previousElementSibling;
+      const isPassword = input.type === 'password';
+      input.type = isPassword ? 'text' : 'password';
+      icon.classList.toggle('fa-eye', isPassword);
+      icon.classList.toggle('fa-eye-slash', !isPassword);
+    });
+  });
+
+  // تبديل قائمة التنقل (الهامبرغر)
+  const hamburger = document.querySelector('.hamburger');
+  const navMenu = document.querySelector('.nav-menu');
+  if (hamburger && navMenu) {
+    hamburger.addEventListener('click', () => {
+      const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !isExpanded);
+      navMenu.classList.toggle('active');
+      hamburger.querySelectorAll('span').forEach((span, index) => {
+        if (!isExpanded) {
+          if (index === 0) span.style.transform = 'rotate(45deg) translate(6px, 6px)';
+          if (index === 1) span.style.opacity = '0';
+          if (index === 2) span.style.transform = 'rotate(-45deg) translate(8px, -8px)';
+        } else {
+          span.style.transform = 'none';
+          span.style.opacity = '1';
+        }
+      });
+    });
+  }
 });
