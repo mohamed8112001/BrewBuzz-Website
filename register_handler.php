@@ -1,11 +1,15 @@
 <?php
 require_once 'includes/config.php';
+
+// ini_set('display_errors', '1');
+// ini_set('display_startup_errors', '1');
+// error_reporting(E_ALL);
 session_start(); // Ensure session is started
 
 // Sanitize and validate input
-$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+$name = $_POST['name'] ;
+$email = $_POST['email'] ;
+$password = $_POST['password'] ;
 
 // Perform server-side validation
 if (!$name || !$email || !$password) {

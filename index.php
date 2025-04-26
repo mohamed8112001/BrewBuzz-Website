@@ -16,8 +16,6 @@ if (!isset($_SESSION['user_id'])) {
     <div class="hero-overlay"></div>
     <div class="hero-content container animate-slide-up">
       <div class="hero-logo">BrewBuzz</div>
-      <h1>ابدأ يومك بقهوة مثالية</h1>
-      <p class="hero-quote">"القهوة هي ذهب الرجل العادي، ومثل الذهب، فإنها تجلب لكل شخص شعورًا بالرفاهية والنبل." - د. نات أورايت</p>
       <a href="#coffee-picks" class="btn hero-btn" aria-label="استكشف اختيارات القهوة">اكتشف خلطاتنا</a>
     </div>
   </section>
