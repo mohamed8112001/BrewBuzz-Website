@@ -6,18 +6,6 @@ include 'layout/header.php';
 <section class="form-section container animate-fade-in">
   <div class="form-card">
     <h2>إنشاء حساب</h2>
-    
-    <?php
-    if ($error_message) {
-        echo '<p id="registerError" class="error" role="alert">' . htmlspecialchars($error_message) . '</p>';
-        unset($_SESSION['error']); // Clear error after displaying
-    }
-    if ($success_message) {
-        echo '<p id="registerSuccess" class="success" role="alert">' . htmlspecialchars($success_message) . '</p>';
-        unset($_SESSION['success']); // Clear success message after displaying
-    }
-    ?>
-
     <form id="registerForm" class="modern-form" method="POST" action="register_handler.php">
       <div class="form-group">
         <label for="name">الاسم</label>
