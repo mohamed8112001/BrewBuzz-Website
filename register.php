@@ -6,6 +6,18 @@ include 'layout/header.php';
 <section class="form-section container animate-fade-in">
   <div class="form-card">
     <h2>إنشاء حساب</h2>
+    
+    <?php
+    if ($error_message) {
+        echo '<p id="registerError" class="error" role="alert">' . htmlspecialchars($error_message) . '</p>';
+        unset($_SESSION['error']); // Clear error after displaying
+    }
+    if ($success_message) {
+        echo '<p id="registerSuccess" class="success" role="alert">' . htmlspecialchars($success_message) . '</p>';
+        unset($_SESSION['success']); // Clear success message after displaying
+    }
+    ?>
+
     <form id="registerForm" class="modern-form" method="POST" action="register_handler.php">
       <div class="form-group">
         <label for="name">الاسم</label>
@@ -20,7 +32,7 @@ include 'layout/header.php';
         <input type="password" id="password" name="password" required aria-required="true" placeholder="أدخل كلمة المرور">
         <i class="fas fa-eye toggle-password" aria-label="تبديل رؤية كلمة المرور"></i>
       </div>
-      <p id="registerError" class="error" role="alert"></p>
+
       <button type="submit" class="btn btn-circle animate-pulse">تسجيل</button>
       <p class="form-footer">لديك حساب بالفعل؟ <a href="login.php">تسجيل الدخول هنا</a></p>
     </form>

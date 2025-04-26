@@ -16,11 +16,18 @@ if (!isset($current_page)) {
     </button>
     <nav class="nav-menu" aria-label="التنقل الرئيسي">
       <ul>
+        <?php if(isset($_SESSION['user_id'])){ ?>
         <li><a href="index.php" <?php echo $current_page === 'index.php' ? 'class="active"' : ''; ?>>الرئيسية</a></li>
         <li><a href="about.php" <?php echo $current_page === 'about.php' ? 'class="active"' : ''; ?>>عنا</a></li>
         <li><a href="contact.php" <?php echo $current_page === 'contact.php' ? 'class="active"' : ''; ?>>تواصل</a></li>
+        <li><a href="logout.php" <?php echo $current_page === 'logout.php' ? 'class="active"' : ''; ?>>تسجيل الخروج</a></li>
+        <?php }else{  ?>
+          <li><a href="index.php" <?php echo $current_page === 'index.php' ? 'class="active"' : ''; ?>>الرئيسية</a></li>
+        <li><a href="about.php" <?php echo $current_page === 'about.php' ? 'class="active"' : ''; ?>>عنا</a></li>
+        <li><a href="contact.php" <?php echo $current_page === 'contact.php' ? 'class="active"' : ''; ?>>تواصل</a></li>
         <li><a href="login.php" <?php echo $current_page === 'login.php' ? 'class="active"' : ''; ?>>تسجيل الدخول</a></li>
-        <li><a href="register.php" <?php echo $current_page === 'register.php' ? 'class="active"' : ''; ?>>تسجيل</a></li>
+        <li><a href="register.php" <?php echo $current_page === 'register.php' ? 'class="active"' : ''; ?>>تسجيل جديد</a></li>
+        <?php } ?>
       </ul>
     </nav>
   </div>

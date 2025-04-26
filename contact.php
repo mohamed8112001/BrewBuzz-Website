@@ -1,13 +1,17 @@
 <?php
 include('layout/header.php');
 require_once 'includes/config.php'; // Make sure the database connection is included
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
 
 // Fetch all contact messages
 $query = "SELECT name, email, message, created_at FROM contact_messages ORDER BY created_at DESC";
 $result = $connect->query($query);
 
 ?>
-
+<link rel="stylesheet" href="src/css/style.css">
 <section class="form-section container animate-fade-in">
   <div class="form-card">
     <h2>تواصل معنا</h2>
@@ -31,21 +35,23 @@ $result = $connect->query($query);
 
   <!-- Display Submitted Contact Messages -->
   <div class="messages-list">
-    <h2>رسائل تم تلقيها</h2>
-    <?php
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo '<div class="message-card">';
-            echo '<h4>' . htmlspecialchars($row['name']) . ' <span>' . htmlspecialchars($row['email']) . '</span></h4>';
-            echo '<p>' . htmlspecialchars($row['message']) . '</p>';
-            echo '<p class="message-date">تم الاستلام في: ' . $row['created_at'] . '</p>';
-            echo '</div>';
-        }
-    } else {
-        echo '<p>لا توجد رسائل حالياً.</p>';
-    }
-    ?>
-  </div>
+    <h2 class="messages-title">رسائل تم تلقيها</h2>
+    <?php if ($result->num_rows > 0): ?>
+        <?php while ($row = $result->fetch_assoc()): ?>
+            <div class="message-card">
+                <div class="message-header">
+                    <h4 class="message-name"><?php echo htmlspecialchars($row['name']); ?></h4>
+                    <span class="message-email"><?php echo htmlspecialchars($row['email']); ?></span>
+                </div>
+                <p class="message-content"><?php echo nl2br(htmlspecialchars($row['message'])); ?></p>
+                <p class="message-date">تم الاستلام في: <?php echo $row['created_at']; ?></p>
+            </div>
+        <?php endwhile; ?>
+    <?php else: ?>
+        <p class="no-messages">لا توجد رسائل حالياً.</p>
+    <?php endif; ?>
+</div>
+
 </section>
 
 <?php include('layout/footer.php'); ?>

@@ -1,9 +1,15 @@
+<?php include 'layout/header.php'; ?>
 <?php
 $current_page = basename($_SERVER['PHP_SELF']);
 require_once 'includes/config.php';
+
+// Redirect to login if the user is not logged in
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+  }
 ?>
   <!-- التنقل -->
-  <?php include 'layout/header.php'; ?>
 
   <!-- قسم البطل -->
   <section class="hero animate-fade-in" aria-label="قسم البطل">
@@ -73,18 +79,7 @@ require_once 'includes/config.php';
   <section class="form-section container animate-fade-in">
     <div class="form-card">
       <h2>شارك تقييمك</h2>
-      <?php
-      if (isset($_SESSION['success'])) {
-          echo '<p class="success">' . htmlspecialchars($_SESSION['success']) . '</p>';
-          unset($_SESSION['success']);
-      }
-      if (isset($_SESSION['error'])) {
-          echo '<p class="error">' . htmlspecialchars($_SESSION['error']) . '</p>';
-          unset($_SESSION['error']);
-      }
-      ?>
       <form id="reviewForm" class="modern-form" method="POST" action="submit_review.php">
-        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
         <div class="form-group">
           <label for="coffee_name">اسم القهوة</label>
           <input type="text" id="coffee_name" name="coffee_name" required aria-required="true" placeholder="أدخل اسم القهوة">
