@@ -9,9 +9,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
   }
 ?>
-  <!-- التنقل -->
 
-  <!-- قسم البطل -->
   <section class="hero animate-fade-in" aria-label="قسم البطل">
     <div class="hero-overlay"></div>
     <div class="hero-content container animate-slide-up">
@@ -20,7 +18,6 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </section>
 
-  <!-- قسم لماذا BrewBuzz -->
   <section class="why-brewbuzz container animate-fade-in">
     <h2>لماذا BrewBuzz؟</h2>
     <div class="why-grid">
@@ -42,7 +39,6 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </section>
 
-  <!-- اختيارات القهوة المميزة -->
   <section class="coffee-picks container animate-fade-in" id="coffee-picks">
     <h2>أفضل اختيارات القهوة</h2>
     <div class="coffee-grid">
@@ -73,7 +69,6 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </section>
 
-  <!-- قسم نموذج التقييم -->
   <section class="form-section container animate-fade-in">
     <div class="form-card">
       <h2>شارك تقييمك</h2>
@@ -103,7 +98,6 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </section>
 
-  <!-- قسم التقييمات -->
   <section class="reviews container animate-fade-in">
     <h2>تقييمات المجتمع</h2>
     <div class="reviews-container" id="reviewsContainer">
@@ -134,7 +128,6 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </section>
 
-  <!-- قسم الشهادات -->
   <section class="testimonials container animate-fade-in">
     <h2>ماذا يقول عملاؤنا</h2>
     <div class="testimonial-grid">
@@ -153,12 +146,10 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </section>
 
-  <!-- قسم الانضمام للمجتمع -->
   <section class="join-community container animate-fade-in">
     <h2>انضم إلى مجتمع القهوة الخاص بنا</h2>
     <p>سجل لمشاركة تقييماتك، واكتشاف خلطات جديدة، والتواصل مع عشاق القهوة.</p>
     <a href="register.php" class="btn btn-circle" aria-label="انضم الآن">انضم الآن</a>
   </section>
 
-  <!-- الفوتر -->
   <?php include 'layout/footer.php'; ?>

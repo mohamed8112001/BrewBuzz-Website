@@ -7,10 +7,8 @@ $query = "SELECT coffee_name, comment, rating, created_at FROM reviews ORDER BY 
 $result = $connect->query($query);
 ?>
 
-  <!-- التنقل -->
   <?php include 'layout/header.php'; ?>
 
-  <!-- قسم عنا -->
   <section class="about-container">
     <h2>قصتنا</h2>
     <p>
@@ -21,7 +19,6 @@ $result = $connect->query($query);
     </p>
   </section>
 
-  <!-- قسم التقييمات -->
   <section class="reviews container animate-fade-in">
     <h2>تقييمات المجتمع</h2>
     <div class="reviews-container" id="reviewsContainer">
@@ -48,7 +45,6 @@ $result = $connect->query($query);
     </div>
   </section>
 
-  <!-- الفوتر -->
   <?php include 'layout/footer.php'; ?>
 </body>
 </html>
